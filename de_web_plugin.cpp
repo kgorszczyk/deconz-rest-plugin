@@ -4921,7 +4921,7 @@ void DeRestPluginPrivate::addSensorNode(const deCONZ::Node *node, const deCONZ::
                             (modelId == QLatin1String("eaxp72v")) ||
                             (modelId == QLatin1String("88teujp")) ||
                             (modelId == QLatin1String("fvq6avy")) ||
-                            (manufacturer == QLatin1String("_TZE200_kfvq6avy")) ||
+                            (modelId == QLatin1String("TS0601")) ||
                             (modelId == QLatin1String("GbxAXL2")) )
                         {
                             fpThermostatSensor.inClusters.push_back(TUYA_CLUSTER_ID);
