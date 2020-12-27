@@ -373,7 +373,7 @@ static const SupportedDevice supportedDevices[] = {
     { VENDOR_EMBER, "TS0044", silabs9MacPrefix }, // Tuya wireless switch
     { VENDOR_NONE, "kud7u2l", silabs3MacPrefix }, // Tuya Smart TRV HY369 Thermostatic Radiator Valve
     { VENDOR_NONE, "GbxAXL2", silabs3MacPrefix }, // Another Tuya Smart TRV Thermostatic Radiator Valve
-    { VENDOR_EMBER, "TS0601", silabs7MacPrefix }, // Tuya Smart TRV HY369 Thermostatic Radiator Valve
+    { VENDOR_EMBER, "TS0601", silabs7MacPrefix }, // Tuya Smart TRV HY369 Thermostatic Radiator Valve & Revolt NX-4911-675 Thermostat
     { VENDOR_EMBER, "TS0601", silabs5MacPrefix }, // MOES Zigbee Radiator Actuator HY368 / Moes Tuya Thermostat BTH-002
     { VENDOR_EMBER, "TS0207", silabs3MacPrefix }, // Tuya water leak sensor
     { VENDOR_NONE, "TS0202", silabs4MacPrefix }, // Tuya presence sensor
@@ -2204,6 +2204,7 @@ void DeRestPluginPrivate::addLightNode(const deCONZ::Node *node)
             if ((lightNode.manufacturer() == QLatin1String("_TYST11_ckud7u2l")) ||
                 (lightNode.manufacturer() == QLatin1String("_TYST11_kfvq6avy")) ||
                 (lightNode.manufacturer() == QLatin1String("_TYST11_c88teujp")) ||
+                (lightNode.manufacturer() == QLatin1String("_TZE200_kfvq6avy")) ||
                 (lightNode.manufacturer() == QLatin1String("_TYST11_jeaxp72v")) )
             {
                 hasServerOnOff = false;
@@ -4919,6 +4920,7 @@ void DeRestPluginPrivate::addSensorNode(const deCONZ::Node *node, const deCONZ::
                             (modelId == QLatin1String("eaxp72v")) ||
                             (modelId == QLatin1String("88teujp")) ||
                             (modelId == QLatin1String("fvq6avy")) ||
+                            (manufacturer == QLatin1String("_TZE200_kfvq6avy")) ||
                             (modelId == QLatin1String("GbxAXL2")) )
                         {
                             fpThermostatSensor.inClusters.push_back(TUYA_CLUSTER_ID);
@@ -5367,6 +5369,7 @@ void DeRestPluginPrivate::addSensorNode(const deCONZ::Node *node, const deCONZ::
                         (modelId == QLatin1String("GbxAXL2")) ||
                         (manufacturer == QLatin1String("_TYST11_jeaxp72v")) ||
                         (manufacturer == QLatin1String("_TYST11_kfvq6avy")) ||
+                        (manufacturer == QLatin1String("_TZE200_kfvq6avy")) ||
                         (manufacturer == QLatin1String("_TYST11_c88teujp")) ||
                         (manufacturer == QLatin1String("_TZE200_aoclfnxz")) ||
                         (manufacturer == QLatin1String("_TZE200_c88teujp")) ||
@@ -6426,6 +6429,7 @@ void DeRestPluginPrivate::addSensorNode(const deCONZ::Node *node, const SensorFi
                 sensorNode.modelId() == QLatin1String("eaxp72v") || // Tuya
                 sensorNode.modelId() == QLatin1String("88teujp") || // Tuya
                 sensorNode.modelId() == QLatin1String("fvq6avy") || // Tuya
+                sensorNode.manufacturer() == QLatin1String("_TZE200_kfvq6avy")  ||  // Tuya
                (sensorNode.manufacturer() == QLatin1String("_TZE200_c88teujp")) ||
                (sensorNode.manufacturer() == QLatin1String("_TZE200_aoclfnxz")) ||
                (sensorNode.manufacturer() == QLatin1String("_TZE200_ckud7u2l")) )   // Tuya
@@ -6438,7 +6442,8 @@ void DeRestPluginPrivate::addSensorNode(const deCONZ::Node *node, const SensorFi
             if (sensorNode.modelId() == QLatin1String("kud7u2l") || // Tuya
                 sensorNode.modelId() == QLatin1String("88teujp") || // Tuya
                 sensorNode.modelId() == QLatin1String("fvq6avy") || // Tuya
-               (sensorNode.manufacturer() == QLatin1String("_TZE200_c88teujp")) ||
+                sensorNode.manufacturer() == QLatin1String("_TZE200_kfvq6avy")  ||
+               (sensorNode.manufacturer() == QLatin1String("_TZE200_c88teujp")) || 
                (sensorNode.manufacturer() == QLatin1String("_TZE200_aoclfnxz")) ||
                (sensorNode.manufacturer() == QLatin1String("_TZE200_ckud7u2l")) )   // Tuya
             {
@@ -6449,6 +6454,7 @@ void DeRestPluginPrivate::addSensorNode(const deCONZ::Node *node, const SensorFi
                 sensorNode.modelId() == QLatin1String("eaxp72v") || // Tuya
                 sensorNode.modelId() == QLatin1String("88teujp") || // Tuya
                 sensorNode.modelId() == QLatin1String("fvq6avy") || // Tuya
+                sensorNode.manufacturer() == QLatin1String("_TZE200_kfvq6avy")  ||  // Tuya
                (sensorNode.manufacturer() == QLatin1String("_TZE200_c88teujp")) ||
                (sensorNode.manufacturer() == QLatin1String("_TZE200_ckud7u2l")) )   // Tuya
             {
